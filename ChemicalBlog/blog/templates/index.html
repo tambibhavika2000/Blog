@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>ChemicalBlog</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- bootstrap Css -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <!-- fOR ANIMATION Css -->
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+      <!-- Owl caurosal -->
+
+      {% load static %}
+      <link rel="stylesheet" href="{%static 'plugin/OWL/css/owl.theme.default.min.css' %}">
+      <link rel="stylesheet" href="{%static 'plugin/OWL/css/owl.carousel.min.css' %}">
+
+      <!-- Font Awsome -->
+      <link href="{%static 'css/font-awesome.min.css' %}" rel="stylesheet">
+
+      <!--Custome CSS  -->
+      {% load static %}
+      <link rel="stylesheet" href="{%static 'css/style.css' %}">
+      <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{%static 'css/responsive.css' %}">
+      <link rel="stylesheet" href="{%static 'css/clean-blog.min.css' %}">
+      <!--FOnts  -->
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+      <!-- JavaScripts -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <!-- BootStrap -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <!--  -->
+      <script src="{%static 'plugin/OWL/js/owl.carousel.min.js' %}"></script>
+      <!--  -->
+      <script src="{%static 'js/flex-menu.js' %}"></script>
+      <!--  -->
+      <script src="{%static 'js/function.js' %}"></script>
+   </head>
+
+   <body>
+   <!-- NavBar-->
+     <div class="header-menu sticky" style="z-index:1020">
+         <div class="container ">
+            <ul class="dropDownMenu">
+               <li><a href="/" class="active">Home</a></li>
+               <li><a href="/blog" >Blog</a></li>
+               <li><a href="/interview" >Interviews</a></li>
+               <li><a href="/news" >News</a></li>
+            </ul>
+         </div>
+      </div>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image:url('{%static 'assets/chem.jpg' %}');">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>CHEMICAL BLOGS</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+      <!-- **********************Popular Courses*********************************-->
+      <section class="PopularCourses martop">
+         <h1 class="text-center">Recent <span style="color:#457bcc"> Articles</span></h1>
+         <div class="container">
+             {% for post in allBlog %}
+               <div class="item col-lg-4 col-md-12">
+                  <div class="single-course">
+                     <div class="course-head overlay">
+                        <img src='/media/{{post.image1}}' style="max-height:250px;min-height:250px" alt="#">
+                        <a href="/blog/{{post.article_title}}" class="btn"><i class="fa fa-link"></i></a>
+                     </div>
+                     <div class="single-content" style="max-height:350px;min-height:350px;overflow: hidden;">
+                        <h4><a href="/blog/{{post.article_title}}"><span style="font-size:20px;">{{post.article_title}}</span></a></h4>
+                        <p>{{post.para1|truncatechars:200|safe}}</p>
+                     </div>
+                     <div class="course-meta">
+                        <a href="/blog/{{post.article_title}}"><span class="price" style="display:inline-block">Browse More</span></a>
+                     </div>
+                  </div>
+               </div>
+            {% endfor %}
+         </div>
+      </section>
+      <!-- Interviews-->
+      <section class="event martop">
+         <h1 class="text-center">Top <span style="color:#457bcc"> Interviews</span></h1>
+         <div class="container">
+                {% for post in allInt %}
+               <div class="item col-lg-4 col-md-12">
+                  <div class="single-event">
+                     <div class="event-head overlay">
+                        <div class="search">
+                           <a href="/interview/{{post.interview_title}}">
+                              <i class="fa fa-search"></i></a>
+                        </div>
+                        <img src='/media/{{post.image1}}' style="max-height:250px;min-height:250px">
+                     </div>
+                     <div class="event-content">
+                        <h4 class="event-title"style="font-size:25px; padding-bottom:12px"><a href="/interview/{{post.interview_title}}">{{post.interview_title}}</a></h4>
+                     <div class="event-info">
+                     <i class="fa fa-calendar"></i> {{post.pub_date}}
+                     <i class="fa fa-clock-o"></i> {{post.position}}
+                     </div>
+                        <div class="content" style="max-height: 270px;min-height:270px;
+    overflow: hidden;"> <p>{{post.para1|truncatechars:200|safe}}</p></div>
+                     <div class="button">
+                     <a href="/interview/{{post.interview_title}}" class="btn">Read More</a>
+                     </div>
+                     </div>
+                  </div>
+               </div>
+                  {% endfor %}
+            </div>
+      </section>
+
+      <!-- news -->
+      <section class="news martop">
+         <h1 class="text-center">Latest <span style="color:#457bcc"> News</span></h1>
+         <div class="container">
+               <div class="item col-lg-4 col-md-12">
+                  <div class="single-news">
+                     <div class="news-head overlay">
+                        <div class="date">
+                           <h4>25<span>Feb</span></h4>
+                        </div>
+                        <img src="{%static 'assets/fire1.jpg' %}" alt="#">
+                     </div>
+                     <div class="news-content">
+                        <h4 class="news-title"><a href="#">Fire in ONGC</a></h4>
+                        <div class="news-info">
+                           <a href="#"><i class="fa fa-calendar"></i>25 Feb 2020</a>
+                        </div>
+                        <p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Et harum quidem rerum facilis est et expedita distinctio</p>
+                        <div class="button">
+                           <a href="#" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="item col-lg-4 col-md-12">
+                  <div class="single-news">
+                     <div class="news-head overlay">
+                        <div class="date">
+                           <h4>25<span>Feb</span></h4>
+                        </div>
+                        <img src="{%static 'assets/bomb.jpg' %}" alt="#">
+                     </div>
+                     <div class="news-content">
+                        <h4 class="news-title"><a href="#">Mumbai Bomb Blast</a></h4>
+                        <div class="news-info">
+                           <a href="#"><i class="fa fa-calendar"></i>25 Feb 2020</a>
+                        </div>
+                        <p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Et harum quidem rerum facilis est et expedita distinctio</p>
+                        <div class="button">
+                           <a href="#" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="item col-lg-4 col-md-12">
+                  <div class="single-news">
+                     <div class="news-head overlay">
+                        <div class="date">
+                           <h4>25<span>Feb</span></h4>
+                        </div>
+                        <img src="{%static 'assets/gas.jpg' %}" alt="#">
+                     </div>
+                     <div class="news-content">
+                        <h4 class="news-title"><a href="#">Gas Leak</a></h4>
+                        <div class="news-info">
+                           <a href="#"><i class="fa fa-calendar"></i>25 Feb 2020</a>
+                        </div>
+                        <p>Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Et harum quidem rerum facilis est et expedita distinctio</p>
+                        <div class="button">
+                           <a href="#" class="btn">Read More<i class="fa fa-angle-double-right"></i></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+         </div>
+         <br>
+         <br>
+      </section>
+      <!--/ End newss -->
+      <!-- Footer -->
+      <footer class="Bottomfooter">
+         <div class="footer-top ">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 ">
+                     <!-- Useful Links -->
+                     <div class=" useful-links">
+                        <h4 style="color:white">Useful Links</h4>
+                        <ul>
+                           <li><a href=""><i class="fa fa-angle-right"></i>Home</a></li>
+                           <li><a href="blog/"><i class="fa fa-angle-right"></i>Articles</a></li>
+                           <li><a href="interview/"><i class="fa fa-angle-right"></i>Interviews</a></li>
+                           <li><a href="news/"><i class="fa fa-angle-right"></i>News</a></li>
+                        </ul>
+                     </div>
+                     <!--/ End Useful Links -->
+                  </div>
+                  <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+                     <!-- Latest News -->
+                     <div class=" latest-news">
+                        <h4 style="color:white">Latest Posts</h4>
+                        <div class="news-inner">
+                           <div class="single-news">
+                              <img  style="float:left" src="{%static 'assets/article3.jpg' %}"  alt="#" class="img-responsive">
+                              <p><a href="#" style="color:white">Petrol engineering</a> <br> </p>
+                           </div>
+                           <div class="single-news">
+                              <img   style="float:left" src="{%static 'assets/article4.jpg' %}" alt="#" class="img-responsive">
+                              <p><a href="#" style="color:white">Reliance Interviews</a><br>
+                              </p>
+                           </div>
+                           <div class="single-news">
+                              <img   style="float:left" src="{%static 'assets/bomb.jpg' %}" alt="#" class="img-responsive">
+                              <p><a href="#" style="color:white">Talk with Mukesh Ambani</a><br>
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/ End Latest News -->
+                  </div>
+                  <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 ">
+                     <!-- Newsletter -->
+                     <div class=" newsletter">
+                        <h4 style="color:white">Subscribe Newsletter</h4>
+                        <div class="mail">
+                           <p style="color:white">Don't miss to  subscribe to our news feed, Get the latest updates from us!</p>
+                           <div class="form input-group ">
+                              <input type="email" placeholder="Enter your email" class="form-control input-lg">
+                              <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!--/ End Newsletter -->
+               </div>
+            </div>
+         </div>
+         <!--/ End Footer Bottom -->
+      </footer>
+      <!--/ End Footer -->
+   </body>
+</html>

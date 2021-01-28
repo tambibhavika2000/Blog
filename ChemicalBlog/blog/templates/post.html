@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap" rel="stylesheet">
+  {% load static %}
+      <link rel="stylesheet" href="{%static 'css/style.css' %}">
+      <link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{%static 'css/responsive.css' %}">
+      <link rel="stylesheet" href="{%static 'css/clean-blog.min.css' %}">
+  <title>Blog Post</title>
+
+  <!-- Bootstrap core CSS -->
+
+  <!-- Custom fonts for this template -->
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <!-- Page Header -->
+        <div class="header-menu sticky">
+         <div class="container ">
+            <ul class="dropDownMenu">
+               <li><a href="/">Home</a></li>
+                {% if blogs.article_title %}
+               <li><a href="/blog" class="active" >Blog</a></li>
+                 <li><a href="/interview" >Interviews</a></li>
+                {% endif %}
+                {% if blogs.interview_title %}
+                  <li><a href="/blog" >Blog</a></li>
+                 <li><a href="/interview" class="active">Interviews</a></li>
+              {% endif %}
+               <li><a href="/news" >News</a></li>
+            </ul>
+         </div>
+      </div>
+  <header class="masthead" style="background-image:url('/media/{{blogs.image1}}');">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 mx-auto">
+          <div class="post-heading">
+              {% if blogs.article_title %}
+            <h1 class="title-style">{{blogs.article_title}}</h1>{% endif %}
+              {% if blogs.interview_title %}
+            <h1 class="title-style">{{blogs.interview_title}}</h1>{% endif %}
+            <span class="meta">Posted by
+                 {% if blogs.article_by %}
+              <a href="#">{{blogs.article_by}}</a>{% endif %}
+                {% if blogs.person %}
+              <a href="#">{{blogs.person}}</a>{% endif %}
+              on {{blogs.pub_date}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12  mx-auto text-justify">
+            {% if blogs.position %}<b>POSITION: {{blogs.position}}</b>{% endif %}
+            {% if blogs.head1 %} <div class="parastyle"><h2 class="section-heading headstyle">{{blogs.head1|safe}}</h2> </div>{% endif %}
+            {% if blogs.para1 %} <div class="parastyle">{{blogs.para1|safe}}</div>{% endif %}
+            {% if blogs.head2 %} <h2 class="section-heading headstyle">{{blogs.head2|safe}}</h2> {% endif %}
+            {% if blogs.para2 %} <div class="parastyle">{{blogs.para2|safe}}</div>{% endif %}
+            {% if blogs.image2 %} <img class="img-fluid img-thumbnail center" src='/media/{{blogs.image2}}' style="display:block; margin:auto; width:50%;" alt=""><br>{% endif %}
+            {% if blogs.head3 %} <h2 class="section-heading headstyle">{{blogs.head3|safe}}</h2> {% endif %}
+            {% if blogs.para3 %}<div class="parastyle">{{blogs.para3|safe}}</div>{% endif %}
+            {% if blogs.image3 %} <img class="img-fluid img-thumbnail center" src='/media/{{blogs.image3}}' style="display:block; margin:auto; width:50%;" alt=""><br>{% endif %}
+            {% if blogs.head4 %} <h2 class="section-heading headstyle">{{blogs.head4|safe}}</h2> {% endif %}
+            {% if blogs.para4 %}<div class="parastyle">{{blogs.para4|safe}}</div>{% endif %}
+            {% if blogs.image4 %} <img class="img-fluid img-thumbnail center" src='/media/{{blogs.image4}}' style="display:block; margin:auto; width:50%;" alt=""><br>{% endif %}
+        </div>
+          <br>
+      </div>
+    </div>
+  </article>
+
+     <footer class="Bottomfooter">
+         <div class="footer-top ">
+            <div class="container">
+               <div class="row">
+                  <div class="col-lg-2 col-md-6 col-sm-12 col-xs-12 ">
+                     <!-- Useful Links -->
+                     <div class=" useful-links">
+                        <h4 style="color:white">Useful Links</h4>
+                        <ul>
+                           <li><a href="#"><i class="fa fa-angle-right"></i>Home</a></li>
+                           <li><a href="#"><i class="fa fa-angle-right"></i>Articles</a></li>
+                           <li><a href="#"><i class="fa fa-angle-right"></i>Interviews</a></li>
+                           <li><a href="#"><i class="fa fa-angle-right"></i>News</a></li>
+                        </ul>
+                     </div>
+                     <!--/ End Useful Links -->
+                  </div>
+                  <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+                     <!-- Latest News -->
+                     <div class=" latest-news">
+                        <h4 style="color:white">Latest Posts</h4>
+                        <div class="news-inner">
+                           <div class="single-news">
+                              <img  style="float:left" src="{%static 'assets/article3.jpg' %}"  alt="#" class="img-responsive">
+                              <p><a href="#" style="color:white">Petrol engineering</a> <br>nc purus orci, blandit </p>
+                           </div>
+                           <div class="single-news">
+                              <img   style="float:left" src="{%static 'assets/article4.jpg' %}" alt="#" class="img-responsive">
+                              <p><a href="#" style="color:white">Relaince interviews</a><br>
+                                 Nunc purus orci, blandit
+                              </p>
+                           </div>
+                           <div class="single-news">
+                              <img   style="float:left" src="{%static 'assets/bomb.jpg' %}" alt="#" class="img-responsive">
+                              <p><a href="#" style="color:white">Talk with Mukesh Ambani</a><br>
+                                 Nunc purus orci, blandit condiment
+                              </p>
+                           </div>
+                        </div>
+                     </div>
+                     <!--/ End Latest News -->
+                  </div>
+                  <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 ">
+                     <!-- Newsletter -->
+                     <div class=" newsletter">
+                        <h4 style="color:white">Subscribe Newsletter</h4>
+                        <div class="mail">
+                           <p style="color:white">Don't miss to  subscribe to our news feed, Get the latest updates from us!</p>
+                           <div class="form input-group ">
+                              <input type="email" placeholder="Enter your email" class="form-control input-lg">
+                              <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!--/ End Newsletter -->
+               </div>
+            </div>
+         </div>
+         <!--/ End Footer Bottom -->
+      </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
